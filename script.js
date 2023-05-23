@@ -1,19 +1,21 @@
 let resultsContainer = document.getElementsByClassName('container')[0];
 
 let timer;
+
 const validateInput = (el) => {
-  console.log('before', timer);
   if (timer) clearTimeout(timer);
   timer = setTimeout(() => {
-    console.log(el);
-    if (el.value === '') {
-      resultsContainer.innerHTML =
-        '<p>Type something in the above search input</p>';
-    } else {
-      generateResults(el.value, el);
-    }
-  }, 3000);
-  console.log('after', timer);
+    checkValue(el);
+  }, 2000);
+};
+
+const checkValue = (el) => {
+  if (el.value === '') {
+    resultsContainer.innerHTML =
+      '<p>Type something in the above search input</p>';
+  } else {
+    generateResults(el.value, el);
+  }
 };
 
 const generateResults = (searchValue, inputField) => {
